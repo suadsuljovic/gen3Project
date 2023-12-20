@@ -12,3 +12,4 @@
 | Dzenis Bronja      | AntD        | Axios            | Context          | CSS  | e-commerce |
 | Davud Masovic      | Material UI | Axios            | Redux            | CSS  | e-commerce |
 | Enes Klimenta      | Mantine     | Fetch API        | Vuex             | CSS  | e-commerce |
+| Special Guest      | Antd        | Axios            | Redux            | CSS  | Blog       |
