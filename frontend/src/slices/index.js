@@ -4,12 +4,8 @@ import axios from "axios"; // Assuming you have axios for making HTTP requests
 
 // Async thunk for fetching blogs
 export const fetchBlogs = createAsyncThunk("blogs/fetchBlogs", async () => {
-  try {
-    const response = await axios.get("https://api.example.com/blogs");
-    return response.data;
-  } catch (error) {
-    throw error;
-  }
+  const response = await axios.get("https://api.example.com/blogs");
+  return response.data;
 });
 
 const blogsSlice = createSlice({
@@ -39,6 +35,6 @@ const blogsSlice = createSlice({
 });
 
 export default blogsSlice.reducer;
-export const {
-  /* additional synchronous action creators */
-} = blogsSlice.actions;
+// export const {
+//   /* additional synchronous action creators */
+// } = blogsSlice.actions;
