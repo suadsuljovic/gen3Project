@@ -1,42 +1,30 @@
 import { Layout, Menu, theme } from "antd";
 import { useLocation, useNavigate } from "react-router-dom";
+import styles from "./layout.module.css";
+
 const { Header, Content, Footer } = Layout;
 const items = [
   { label: "Home", key: "1" },
   { label: "Groups", key: "2" },
 ];
+
 const MyLayout = (props) => {
   const { children } = props;
   const navigate = useNavigate();
   const location = useLocation();
 
   const isLandingPage = location.pathname === "/";
-
-  const {
-    token: { colorBgContainer, borderRadiusLG },
-  } = theme.useToken();
+  const isGroupsPage = location.pathname === "/";
 
   return (
     <Layout>
-      <Header
-        style={{
-          position: "sticky",
-          top: 0,
-          zIndex: 1,
-          width: "100%",
-          display: "flex",
-          alignItems: "center",
-        }}
-      >
+      <Header className={styles.nav}>
         <div className="demo-logo" />
         <Menu
           theme="dark"
           mode="horizontal"
           items={items}
-          style={{
-            flex: 1,
-            minWidth: 0,
-          }}
+          className={styles.menu}
           selectedKeys={[isLandingPage ? "1" : "2"]}
           onClick={(item) => {
             if (item.key === "1") {
@@ -49,28 +37,9 @@ const MyLayout = (props) => {
         />
       </Header>
 
-      <Content
-        style={{
-          padding: "0 48px",
-        }}
-      >
-        <div
-          style={{
-            padding: 24,
-            minHeight: 380,
-            background: colorBgContainer,
-            borderRadius: borderRadiusLG,
-          }}
-        >
-          {children}
-        </div>
-      </Content>
+      <Content className={styles.content}>{children}</Content>
 
-      <Footer
-        style={{
-          textAlign: "center",
-        }}
-      >
+      <Footer className={styles.footer}>
         Ant Design ©2023 Created by Ant UED
       </Footer>
     </Layout>

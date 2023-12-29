@@ -1,0 +1,21 @@
+.nav {
+  position: sticky;
+  top: 0;
+  z-index: 1;
+  width: 100%;
+  display: flex;
+  align-items: center;
+}
+
+.menu {
+  flex: 1;
+  min-width: 0;
+}
+
+.content {
+  padding: 0 48px;
+}
+
+.footer {
+  text-align: center;
+}

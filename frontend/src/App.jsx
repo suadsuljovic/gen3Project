@@ -16,8 +16,8 @@ const router = createBrowserRouter([
     ),
     children: [
       { index: true, element: <LandingPage /> },
-      { path: "article/:id", element: <ArticlePage /> },
-      { path: "groups", element: <GroupsPage /> },
+      { path: "/article/:id", element: <ArticlePage /> },
+      { path: "/groups", element: <GroupsPage /> },
     ],
   },
 ]);
