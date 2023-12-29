@@ -1,6 +1,7 @@
-import { Layout, Menu, theme } from "antd";
+import { Layout, Menu } from "antd";
 import { useLocation, useNavigate } from "react-router-dom";
 import styles from "./layout.module.css";
+import { paths } from "../utils";
 
 const { Header, Content, Footer } = Layout;
 const items = [
@@ -13,8 +14,8 @@ const MyLayout = (props) => {
   const navigate = useNavigate();
   const location = useLocation();
 
-  const isLandingPage = location.pathname === "/";
-  const isGroupsPage = location.pathname === "/";
+  const isLandingPage = location.pathname === paths.landing;
+  const isGroupsPage = location.pathname === paths.group;
 
   return (
     <Layout>
@@ -25,13 +26,13 @@ const MyLayout = (props) => {
           mode="horizontal"
           items={items}
           className={styles.menu}
-          selectedKeys={[isLandingPage ? "1" : "2"]}
+          selectedKeys={[isLandingPage ? "1" : isGroupsPage ? "2" : "0"]}
           onClick={(item) => {
             if (item.key === "1") {
-              navigate("/");
+              navigate(paths.landing);
             }
             if (item.key === "2") {
-              navigate("/groups");
+              navigate(paths.group);
             }
           }}
         />
@@ -39,9 +40,7 @@ const MyLayout = (props) => {
 
       <Content className={styles.content}>{children}</Content>
 
-      <Footer className={styles.footer}>
-        Ant Design ©2023 Created by Ant UED
-      </Footer>
+      <Footer className={styles.footer}>My awesome footer @Suad</Footer>
     </Layout>
   );
 };

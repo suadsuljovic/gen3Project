@@ -5,10 +5,11 @@ import LandingPage from "./pages/LandingPage";
 import ArticlePage from "./pages/ArticlePage";
 import GroupsPage from "./pages/GroupsPage";
 import MyLayout from "./components/Layout";
+import { paths } from "./utils";
 
 const router = createBrowserRouter([
   {
-    path: "/",
+    path: paths.landing,
     element: (
       <MyLayout>
         <Outlet />
@@ -16,8 +17,8 @@ const router = createBrowserRouter([
     ),
     children: [
       { index: true, element: <LandingPage /> },
-      { path: "/article/:id", element: <ArticlePage /> },
-      { path: "/groups", element: <GroupsPage /> },
+      { path: paths.article, element: <ArticlePage /> },
+      { path: paths.group, element: <GroupsPage /> },
     ],
   },
 ]);
