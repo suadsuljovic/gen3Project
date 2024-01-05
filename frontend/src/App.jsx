@@ -4,7 +4,7 @@ import { createBrowserRouter, Outlet, RouterProvider } from "react-router-dom";
 import LandingPage from "./pages/LandingPage";
 import ArticlePage from "./pages/ArticlePage";
 import GroupsPage from "./pages/GroupsPage";
-import MyLayout from "./components/Layout";
+import MyLayout from "./components/Layout/Layout";
 import { paths } from "./utils";
 import { ConfigProvider } from "antd";
 
@@ -25,8 +25,6 @@ const router = createBrowserRouter([
 ]);
 
 function App() {
-  const blogsState = useSelector((state) => state.blogs);
-
   return (
     <>
       <ConfigProvider

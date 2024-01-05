@@ -1,7 +1,7 @@
 import { Layout, Menu } from "antd";
 import { useLocation, useNavigate } from "react-router-dom";
 import styles from "./layout.module.css";
-import { paths } from "../utils";
+import { paths } from "../../utils";
 
 const { Header, Content, Footer } = Layout;
 const items = [
@@ -38,7 +38,7 @@ const MyLayout = (props) => {
         />
       </Header>
 
-      <Content className={styles.content}>{children}</Content>
+      <Content>{children}</Content>
 
       <Footer className={styles.footer}>My awesome footer @Suad</Footer>
     </Layout>
