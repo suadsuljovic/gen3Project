@@ -5,7 +5,9 @@ import { blogApi } from "../api";
 
 // Async thunk for fetching blogs
 export const fetchBlogs = createAsyncThunk("blogs/fetchBlogs", async () => {
-  const response = await blogApi.get("api/articles");
+  const response = await blogApi.get(
+    "api/articles?filters[category][$eq]=popular"
+  );
   return response.data;
 });
 
