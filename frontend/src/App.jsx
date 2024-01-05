@@ -6,6 +6,7 @@ import ArticlePage from "./pages/ArticlePage";
 import GroupsPage from "./pages/GroupsPage";
 import MyLayout from "./components/Layout";
 import { paths } from "./utils";
+import { ConfigProvider } from "antd";
 
 const router = createBrowserRouter([
   {
@@ -28,7 +29,14 @@ function App() {
 
   return (
     <>
-      <RouterProvider router={router} />
+      <ConfigProvider
+        theme={{
+          token: {},
+          components: {},
+        }}
+      >
+        <RouterProvider router={router} />
+      </ConfigProvider>
     </>
   );
 }

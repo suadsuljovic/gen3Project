@@ -1,10 +1,11 @@
 // blogsSlice.js
 import { createSlice, createAsyncThunk } from "@reduxjs/toolkit";
-import axios from "axios"; // Assuming you have axios for making HTTP requests
+
+import { blogApi } from "../api";
 
 // Async thunk for fetching blogs
 export const fetchBlogs = createAsyncThunk("blogs/fetchBlogs", async () => {
-  const response = await axios.get("https://api.example.com/blogs");
+  const response = await blogApi.get("api/articles");
   return response.data;
 });
 
@@ -16,7 +17,9 @@ const blogsSlice = createSlice({
     error: null,
   },
   reducers: {
-    // Additional synchronous actions can be defined here
+    changeLoading: (state) => {
+      state.status = "loading";
+    },
   },
   extraReducers: (builder) => {
     builder
@@ -35,6 +38,4 @@ const blogsSlice = createSlice({
 });
 
 export default blogsSlice.reducer;
-// export const {
-//   /* additional synchronous action creators */
-// } = blogsSlice.actions;
+export const { changeLoading } = blogsSlice.actions;
