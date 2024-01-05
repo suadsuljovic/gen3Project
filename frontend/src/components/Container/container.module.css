@@ -1,0 +1,37 @@
+/* Default styles */
+.container {
+  box-sizing: border-box;
+  margin: 0 auto;
+}
+
+/* Small screens (s) */
+@media only screen and (max-width: 600px) {
+  .container {
+    max-width: 100%;
+    padding: 10px;
+  }
+}
+
+/* Medium screens (m) */
+@media only screen and (min-width: 601px) and (max-width: 900px) {
+  .container {
+    max-width: 80%;
+    padding: 20px;
+  }
+}
+
+/* Large screens (l) */
+@media only screen and (min-width: 901px) and (max-width: 1200px) {
+  .container {
+    max-width: 900px;
+    padding: 30px;
+  }
+}
+
+/* Extra-large screens (xl) */
+@media only screen and (min-width: 1201px) {
+  .container {
+    max-width: 1200px;
+    padding: 40px;
+  }
+}
