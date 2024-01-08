@@ -4,17 +4,43 @@ import { createSlice, createAsyncThunk } from "@reduxjs/toolkit";
 import { blogApi } from "../api";
 
 // Async thunk for fetching blogs
-export const fetchBlogs = createAsyncThunk("blogs/fetchBlogs", async () => {
-  const response = await blogApi.get(
-    "api/articles?filters[category][$eq]=popular"
-  );
-  return response.data;
-});
+export const fetchPopularBlogs = createAsyncThunk(
+  "blogs/fetchPopularBlogs",
+  async () => {
+    const response = await blogApi.get(
+      "/api/articles?populate=category,cover&filters[category][slug][$eq]=popular"
+    );
+    return response.data;
+  }
+);
+
+export const fetchNatureBlogs = createAsyncThunk(
+  "blogs/fetchNatureBlogs",
+  async () => {
+    const response = await blogApi.get(
+      "/api/articles?populate=category,cover&filters[category][slug][$eq]=nature"
+    );
+    return response.data;
+  }
+);
+
+export const fetchNewsBlogs = createAsyncThunk(
+  "blogs/fetchNewsBlogs",
+  async () => {
+    const response = await blogApi.get(
+      "/api/articles?populate=category,cover&filters[category][slug][$eq]=news"
+    );
+    return response.data;
+  }
+);
 
 const blogsSlice = createSlice({
   name: "blogs",
   initialState: {
     blogs: [],
+    popularBlogs: [],
+    natureBlogs: [],
+    newsBlogs: [],
     status: "idle",
     error: null,
   },
@@ -25,14 +51,36 @@ const blogsSlice = createSlice({
   },
   extraReducers: (builder) => {
     builder
-      .addCase(fetchBlogs.pending, (state) => {
+      .addCase(fetchPopularBlogs.pending, (state) => {
         state.status = "loading";
       })
-      .addCase(fetchBlogs.fulfilled, (state, action) => {
+      .addCase(fetchPopularBlogs.fulfilled, (state, action) => {
         state.status = "succeeded";
-        state.blogs = action.payload;
+        state.popularBlogs = action.payload;
       })
-      .addCase(fetchBlogs.rejected, (state, action) => {
+      .addCase(fetchPopularBlogs.rejected, (state, action) => {
+        state.status = "failed";
+        state.error = action.error.message;
+      })
+      .addCase(fetchNatureBlogs.pending, (state) => {
+        state.status = "loading";
+      })
+      .addCase(fetchNatureBlogs.fulfilled, (state, action) => {
+        state.status = "succeeded";
+        state.natureBlogs = action.payload;
+      })
+      .addCase(fetchNatureBlogs.rejected, (state, action) => {
+        state.status = "failed";
+        state.error = action.error.message;
+      })
+      .addCase(fetchNewsBlogs.pending, (state) => {
+        state.status = "loading";
+      })
+      .addCase(fetchNewsBlogs.fulfilled, (state, action) => {
+        state.status = "succeeded";
+        state.newsBlogs = action.payload;
+      })
+      .addCase(fetchNewsBlogs.rejected, (state, action) => {
         state.status = "failed";
         state.error = action.error.message;
       });
