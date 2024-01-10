@@ -21,9 +21,17 @@ function LandingPage() {
     <>
       <Hero />
       <CTA />
-      <LandingCategoryGroup data={popularBlogs?.data} title="Popular blogs" />
-      <LandingCategoryGroup data={natureBlogs?.data} title="Nature blogs" />
-      <LandingCategoryGroup data={newsBlogs?.data} title="News" />
+      <LandingCategoryGroup
+        data={popularBlogs?.data}
+        title="Popular blogs"
+        id="popular"
+      />
+      <LandingCategoryGroup
+        data={natureBlogs?.data}
+        title="Nature blogs"
+        id="nature"
+      />
+      <LandingCategoryGroup data={newsBlogs?.data} title="News" id="news" />
     </>
   );
 }
