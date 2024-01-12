@@ -2,6 +2,7 @@ export const paths = Object.freeze({
   landing: "/",
   article: "/article/:id",
   group: "/group/:id",
+  search: "/search/:q",
 });
 
 export const getImageUrl = (url) => {
